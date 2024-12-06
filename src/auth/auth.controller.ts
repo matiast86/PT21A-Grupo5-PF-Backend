@@ -68,6 +68,7 @@ export class AuthController {
     return await this.authService.signIn(credentials);
   }
 
+  @ApiOperation({summary: 'Verify email address with a code'})
   @Post('codeVerification')
   async verificationEmailWhitCode(
     @Query('email') email: string,
@@ -91,7 +92,7 @@ export class AuthController {
 
     const token = await this.authService.generateJwt(user);
 
-    const redirectUrl = `http://localhost:3000/auth/callback/?token=${encodeURIComponent(
+    const redirectUrl = `https://rompiendo-barreras-pf.vercel.app/auth/callback/?token=${encodeURIComponent(
       token,
     )}&user=${encodeURIComponent(JSON.stringify(user))}`;
 
