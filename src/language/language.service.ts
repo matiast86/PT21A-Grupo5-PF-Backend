@@ -148,6 +148,7 @@ export class LanguageService {
     const result = await this.languageRepository.update(id, newData);
     return { message: 'Successfully updated', result };
   }
+s
 
   async updateLanguage(
     id: string,
