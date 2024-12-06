@@ -74,7 +74,7 @@ export class AuthService {
    );
    }*/
     
-    const verificationLink = `http://localhost:3000/code-verification?email=${newUser.email}&code=${verificationCode}`;
+    const verificationLink = `https://rompiendo-barreras-pf.vercel.app/code-verification?email=${newUser.email}&code=${verificationCode}`;
 
     const message = emailHtml
       .replace('{{userName}}', signUpUser.name)

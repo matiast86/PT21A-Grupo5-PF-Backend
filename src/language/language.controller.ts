@@ -168,7 +168,7 @@ export class LanguageController {
   async updateImage(
     @Param('id') id: string,
     @UploadedFile(
-      new FilePipe(0, 200000, [
+      new FilePipe(0, 20000000, [
         'image/jpeg',
         'image/png',
         'image/webp',
@@ -224,18 +224,6 @@ export class LanguageController {
   @UseGuards(AuthGuard,RolesGuard)
   @Put('update/:id')
   @ApiConsumes('multipart/form-data')
-  @UseInterceptors(FileInterceptor('file'))
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        file: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
   async update(
     @Param('id') id: string,
     @Body() updateLanguageDto: UpdateLanguageDto,

@@ -68,6 +68,8 @@ export class CoursesRepository {
       .leftJoinAndSelect('course.category', 'category')
       .leftJoinAndSelect('course.students', 'students');
 
+      queryBuilder.andWhere('course.isActive = :isActive', { isActive: true })
+
     Object.keys(filters).forEach((key) => {
       if (key === 'language') {
         queryBuilder.andWhere(`language.path = :language`, {
